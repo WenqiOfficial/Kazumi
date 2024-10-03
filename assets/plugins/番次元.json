@@ -1,0 +1,18 @@
+{
+  "api": "2",
+  "type": "anime",
+  "name": "番次元",
+  "version": "1.0",
+  "muliSources": true,
+  "useWebview": true,
+  "useNativePlayer": true,
+  "usePost": true,
+  "userAgent": "",
+  "baseURL": "https://bangumi.zeroarea.top/",
+  "searchURL":"https://bangumi.zeroarea.top/vod/search/?wd=@keyword",
+  "searchList": "//div/div[3]/div/div/div[2]/div/div",
+  "searchName": "//div[2]/div/a/strong",
+  "searchResult": "//div[2]/div/a",
+  "chapterRoads": "//div/div[3]/div/div[2]/div",
+  "chapterResult": "//div/div/a"
+}
