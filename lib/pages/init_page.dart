@@ -127,7 +127,7 @@ class _InitPageState extends State<InitPage> {
         clickMaskDismiss: false,
         builder: (context) {
           return AlertDialog(
-            title: const Text('免责声明'),
+            title: const Text('泥嚎！'),
             scrollable: true,
             content: Text(statementsText),
             actions: [

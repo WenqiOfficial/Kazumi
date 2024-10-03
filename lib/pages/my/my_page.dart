@@ -54,13 +54,13 @@ class _MyPageState extends State<MyPage> {
               dense: false,
               title: const Text('历史记录'),
             ),
-            ListTile(
-              onTap: () async {
-                Modular.to.pushNamed('/tab/my/plugin');
-              },
-              dense: false,
-              title: const Text('规则管理'),
-            ),
+            // ListTile(
+            //   onTap: () async {
+            //     Modular.to.pushNamed('/tab/my/plugin');
+            //   },
+            //   dense: false,
+            //   title: const Text('规则管理'),
+            // ),
             ListTile(
               onTap: () async {
                 Modular.to.pushNamed('/tab/my/player');
