@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:kazumi/pages/menu/menu.dart';
 import 'package:kazumi/pages/menu/side_menu.dart';
 import 'package:kazumi/utils/utils.dart';
+import 'package:kazumi/utils/storage.dart';
+import 'package:kazumi/bean/settings/settings.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
@@ -45,7 +47,7 @@ class _MyPageState extends State<MyPage> {
       },
       child: Scaffold(
         appBar: const SysAppBar(title: Text('我的')),
-        body: Column(
+        body: ListView(
           children: [
             ListTile(
               onTap: () {
