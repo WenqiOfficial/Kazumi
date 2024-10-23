@@ -11,7 +11,6 @@ import 'package:kazumi/pages/menu/side_menu.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -45,9 +44,13 @@ class _AboutPageState extends State<AboutPage> {
     navigationBarState.showNavigate();
   }
 
-  Future<void> _getCacheSize() async {
+  Future<Directory> _getCacheDir() async {
     Directory tempDir = await getTemporaryDirectory();
-    Directory cacheDir = Directory('${tempDir.path}/libCachedImageData');
+    return Directory('${tempDir.path}/libCachedImageData');
+  }
+
+  Future<void> _getCacheSize() async {
+    Directory cacheDir = await _getCacheDir();
 
     if (await cacheDir.exists()) {
       int totalSizeBytes = await _getTotalSizeOfFilesInDir(cacheDir);
@@ -85,8 +88,8 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Future<void> _clearCache() async {
-    final cacheManager = DefaultCacheManager();
-    await cacheManager.emptyCache();
+    final Directory libCacheDir = await _getCacheDir();
+    await libCacheDir.delete(recursive: true);
     _getCacheSize();
   }
 

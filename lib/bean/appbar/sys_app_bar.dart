@@ -20,6 +20,8 @@ class SysAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final Widget? leading;
 
+  final double? leadingWidth;
+
   final PreferredSizeWidget? bottom;
 
   const SysAppBar(
@@ -31,6 +33,7 @@ class SysAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.shape,
       this.actions,
       this.leading,
+      this.leadingWidth,
       this.bottom});
 
   void _handleCloseEvent() {
@@ -64,7 +67,9 @@ class SysAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
     if (Utils.isDesktop()) {
       // acs.add(IconButton(onPressed: () => windowManager.minimize(), icon: const Icon(Icons.minimize)));
-      acs.add(CloseButton(onPressed: () => _handleCloseEvent()));
+      acs.add(Padding(
+          padding: const EdgeInsets.only(right: 13),
+          child: CloseButton(onPressed: () => _handleCloseEvent())));
     }
     return GestureDetector(
       // behavior: HitTestBehavior.translucent,
@@ -76,6 +81,7 @@ class SysAppBar extends StatelessWidget implements PreferredSizeWidget {
           title: title,
           actions: acs,
           leading: leading,
+          leadingWidth: leadingWidth,
           backgroundColor: backgroundColor,
           elevation: elevation,
           shape: shape,

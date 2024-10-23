@@ -82,8 +82,7 @@ class _BangumiHistoryCardVState extends State<BangumiHistoryCardV> {
             }
           },
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-                StyleString.safeSpace, 7, StyleString.safeSpace, 7),
+            padding: const EdgeInsets.all(7),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -141,7 +140,10 @@ class _BangumiHistoryCardVState extends State<BangumiHistoryCardV> {
                       // 测试 因为API问题评分功能搁置
                       Text('番剧源: ${widget.historyItem.adapterName}',
                           style: style),
-                      Text('上次看到: 第${widget.historyItem.lastWatchEpisode}话',
+                      Text(
+                          widget.historyItem.lastWatchEpisodeName == ''
+                              ? '上次看到: 第${widget.historyItem.lastWatchEpisode}话'
+                              : '上次看到: ${widget.historyItem.lastWatchEpisodeName}',
                           style: style),
                       Text('排名: ${widget.historyItem.bangumiItem.rank}',
                           style: style),

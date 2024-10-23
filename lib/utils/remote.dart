@@ -39,8 +39,7 @@ class RemotePlay {
               actions: [
                 TextButton(
                   onPressed: () async {
-                    searcher.stop();
-                    if (Platform.isAndroid || Platform.isWindows) {
+                    if (Platform.isAndroid || Platform.isWindows || Platform.isMacOS || Platform.isIOS) {
                       if (await _launchURLWithMIME(video, 'video/mp4')) {
                         SmartDialog.dismiss();
                         SmartDialog.showToast('尝试唤起外部播放器',
@@ -69,7 +68,6 @@ class RemotePlay {
                 const SizedBox(width: 20),
                 TextButton(
                   onPressed: () {
-                    searcher.stop();
                     SmartDialog.dismiss();
                   },
                   child: Text(
@@ -131,7 +129,9 @@ class RemotePlay {
               ],
             );
           });
-        });
+        }).then((_) {
+      searcher.stop();
+    });
   }
 
   Icon _deviceUPnPIcon(String deviceType) {
