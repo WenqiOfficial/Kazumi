@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/pages/info/info_controller.dart';
-import 'package:kazumi/bean/card/bangumi_info_card.dart';
+import 'package:bangumi/pages/info/info_controller.dart';
+import 'package:bangumi/bean/card/bangumi_info_card.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
-import 'package:kazumi/pages/popular/popular_controller.dart';
-import 'package:kazumi/bean/card/network_img_layer.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
-import 'package:kazumi/request/query_manager.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
+import 'package:bangumi/pages/popular/popular_controller.dart';
+import 'package:bangumi/bean/card/network_img_layer.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/request/query_manager.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InfoPage extends StatefulWidget {
@@ -59,7 +59,7 @@ class _InfoPageState extends State<InfoPage>
       await infoController.queryBangumiSummaryByID(id);
       setState(() {});
     } catch (e) {
-      KazumiLogger().log(Level.error, e.toString());
+      bangumiLogger().log(Level.error, e.toString());
     }
   }
 
@@ -170,7 +170,7 @@ class _InfoPageState extends State<InfoPage>
                                         SmartDialog.dismiss();
                                         Modular.to.pushNamed('/video/');
                                       } catch (e) {
-                                        KazumiLogger()
+                                        bangumiLogger()
                                             .log(Level.error, e.toString());
                                         SmartDialog.dismiss();
                                       }
@@ -195,7 +195,7 @@ class _InfoPageState extends State<InfoPage>
                       builder: (context) {
                         return AlertDialog(
                           title: const Text('退出确认'),
-                          content: const Text('您想要离开 Kazumi 并在浏览器中打开此视频源吗？'),
+                          content: const Text('您想要离开 bangumi 并在浏览器中打开此视频源吗？'),
                           actions: [
                             TextButton(
                                 onPressed: () {

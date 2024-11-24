@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/menu/menu.dart';
-import 'package:kazumi/pages/menu/side_menu.dart';
-import 'package:kazumi/modules/bangumi/bangumi_item.dart';
-import 'package:kazumi/pages/timeline/timeline_controller.dart';
-import 'package:kazumi/bean/card/bangumi_card.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/utils/constans.dart';
+import 'package:bangumi/pages/menu/menu.dart';
+import 'package:bangumi/pages/menu/side_menu.dart';
+import 'package:bangumi/modules/bangumi/bangumi_item.dart';
+import 'package:bangumi/pages/timeline/timeline_controller.dart';
+import 'package:bangumi/bean/card/bangumi_card.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/utils/constans.dart';
 import 'package:provider/provider.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
-import 'package:kazumi/utils/anime_season.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/utils/anime_season.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 class TimelinePage extends StatefulWidget {

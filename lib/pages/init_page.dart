@@ -1,17 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/pages/my/my_controller.dart';
-import 'package:kazumi/utils/webdav.dart';
-import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
+import 'package:bangumi/pages/my/my_controller.dart';
+import 'package:bangumi/utils/webdav.dart';
+import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:logger/logger.dart';
 import 'package:fvp/fvp.dart' as fvp;
 // import 'package:fvp/mdk.dart' as mdk;
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 // import 'package:path_provider/path_provider.dart';
 
 class InitPage extends StatefulWidget {
@@ -105,25 +105,25 @@ class _InitPageState extends State<InitPage> {
         .get(SettingBoxKey.webDavEnableFavorite, defaultValue: false);
     if (webDavEnable) {
       var webDav = WebDav();
-      KazumiLogger().log(Level.info, '开始从WEBDAV同步记录');
+      bangumiLogger().log(Level.info, '开始从WEBDAV同步记录');
       try {
         await webDav.init();
         try {
           await webDav.downloadHistory();
-          KazumiLogger().log(Level.info, '同步观看记录完成');
+          bangumiLogger().log(Level.info, '同步观看记录完成');
         } catch (e) {
-          KazumiLogger().log(Level.error, '同步观看记录失败 ${e.toString()}');
+          bangumiLogger().log(Level.error, '同步观看记录失败 ${e.toString()}');
         }
         if (webDavEnableFavorite) {
           try {
             await webDav.downloadFavorite();
-            KazumiLogger().log(Level.info, '同步追番列表完成');
+            bangumiLogger().log(Level.info, '同步追番列表完成');
           } catch (e) {
-            KazumiLogger().log(Level.error, '同步追番列表失败 ${e.toString()}');
+            bangumiLogger().log(Level.error, '同步追番列表失败 ${e.toString()}');
           }
         }
       } catch (e) {
-        KazumiLogger().log(Level.error, '初始化WebDav失败 ${e.toString()}');
+        bangumiLogger().log(Level.error, '初始化WebDav失败 ${e.toString()}');
       }
     }
   }
@@ -211,9 +211,9 @@ class _InitPageState extends State<InitPage> {
                 MediaQuery.of(context).size.longestSide >=
             9 / 16);
     if (isWideScreen) {
-      KazumiLogger().log(Level.info, '当前设备宽屏');
+      bangumiLogger().log(Level.info, '当前设备宽屏');
     } else {
-      KazumiLogger().log(Level.info, '当前设备非宽屏');
+      bangumiLogger().log(Level.info, '当前设备非宽屏');
     }
     setting.put(SettingBoxKey.isWideScreen, isWideScreen);
     return const RouterOutlet();
@@ -229,7 +229,7 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(title: const Text("Kazumi")),
+      appBar: AppBar(title: const Text("bangumi")),
       body: Center(
         child: SizedBox(
           height: 200,

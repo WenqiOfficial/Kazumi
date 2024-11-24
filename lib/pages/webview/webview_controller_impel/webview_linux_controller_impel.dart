@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:kazumi/pages/webview/webview_controller.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/pages/webview/webview_controller.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:desktop_webview_window/desktop_webview_window.dart';
 
 class WebviewLinuxItemControllerImpel extends WebviewItemController<Webview> {

@@ -1,5 +1,5 @@
-// This file is a part of Kazumi
-// (https://github.com/Predidit/Kazumi).
+// This file is a part of bangumi
+// (https://github.com/Predidit/bangumi).
 //
 // Copyright © 2024 Predidit
 // All rights reserved.
@@ -20,7 +20,7 @@ void ExternalPlayerUtils::OpenWithPlayer(const char* url) {
     GetTempPathW(MAX_PATH, tempPath);
 
     // Generate a random file name
-    std::wstring randomFileName = L"kazumi_stream_";
+    std::wstring randomFileName = L"bangumi_stream_";
     std::random_device rd;
     std::mt19937 eng(rd());
     std::uniform_int_distribution<> distr(10000000, 99999999);

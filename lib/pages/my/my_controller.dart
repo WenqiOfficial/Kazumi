@@ -1,15 +1,16 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:kazumi/request/api.dart';
+import 'package:bangumi/request/api.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 class MyController {
   Future<bool> checkUpdata({String type = 'manual'}) async {
     Utils.latest().then((value) {
-      if (Api.version == value) {
+      // if (Api.version == value) {
+      if (true) {
         if (type == 'manual') {
           SmartDialog.showToast('当前已经是最新版本！');
         }
@@ -39,7 +40,7 @@ class MyController {
         );
       }
     }).catchError((err) {
-      KazumiLogger().log(Level.error, '检查更新失败 ${err.toString()}');
+      bangumiLogger().log(Level.error, '检查更新失败 ${err.toString()}');
       if (type == 'manual') {
         SmartDialog.showToast('当前是最新版本！');
       }

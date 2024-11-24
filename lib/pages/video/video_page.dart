@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
-import 'package:kazumi/pages/info/info_controller.dart';
-import 'package:kazumi/pages/player/player_controller.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
-import 'package:kazumi/pages/webview/webview_item.dart';
-import 'package:kazumi/pages/history/history_controller.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/pages/info/info_controller.dart';
+import 'package:bangumi/pages/player/player_controller.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
+import 'package:bangumi/pages/webview/webview_item.dart';
+import 'package:bangumi/pages/history/history_controller.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
-import 'package:kazumi/pages/player/player_item.dart';
+import 'package:bangumi/utils/logger.dart';
+import 'package:bangumi/pages/player/player_item.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter/services.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-import 'package:kazumi/bean/appbar/drag_to_move_bar.dart' as dtb;
+import 'package:bangumi/bean/appbar/drag_to_move_bar.dart' as dtb;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:scrollview_observer/scrollview_observer.dart';
 
@@ -512,7 +512,7 @@ class _VideoPageState extends State<VideoPage>
                       videoPageController.currentRoad == currentRoad) {
                     return;
                   }
-                  KazumiLogger().log(Level.info, '视频链接为 $urlItem');
+                  bangumiLogger().log(Level.info, '视频链接为 $urlItem');
                   closeTabBodyAnimated();
                   videoPageController.currentRoad = currentRoad;
                   videoPageController.changeEpisode(count0,

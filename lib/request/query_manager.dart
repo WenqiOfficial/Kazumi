@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:kazumi/plugins/plugins.dart';
+import 'package:bangumi/plugins/plugins.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/info/info_controller.dart';
-import 'package:kazumi/plugins/plugins_controller.dart'; 
+import 'package:bangumi/pages/info/info_controller.dart';
+import 'package:bangumi/plugins/plugins_controller.dart'; 
 
 class QueryManager {
   final InfoController infoController = Modular.get<InfoController>();

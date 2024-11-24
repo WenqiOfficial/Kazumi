@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kazumi/request/api.dart';
+import 'package:bangumi/request/api.dart';
 
 class StyleString {
   static const double cardSpace = 8;
@@ -26,7 +26,7 @@ const List<String> userAgentsList = [
 // Bangumi API 文档要求的UA格式
 Map<String, String> bangumiHTTPHeader = {
   'user-agent':
-      'Predidit/Kazumi/${Api.version} (Android) (https://github.com/Predidit/Kazumi)',
+      'Predidit/bangumi/${Api.version} (Android) (https://github.com/Predidit/bangumi)',
   'referer': '',
 };
 

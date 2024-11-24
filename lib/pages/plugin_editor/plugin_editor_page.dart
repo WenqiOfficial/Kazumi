@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/plugins/plugins.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/plugins/plugins.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
 
 class PluginEditorPage extends StatefulWidget {
   const PluginEditorPage({

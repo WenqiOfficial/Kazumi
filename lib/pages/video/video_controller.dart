@@ -1,12 +1,12 @@
-import 'package:kazumi/modules/roads/road_module.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
+import 'package:bangumi/modules/roads/road_module.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/plugins/plugins.dart';
-import 'package:kazumi/pages/webview/webview_controller.dart';
-import 'package:kazumi/pages/history/history_controller.dart';
+import 'package:bangumi/plugins/plugins.dart';
+import 'package:bangumi/pages/webview/webview_controller.dart';
+import 'package:bangumi/pages/history/history_controller.dart';
 import 'package:mobx/mobx.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 part 'video_controller.g.dart';
 
@@ -60,7 +60,7 @@ abstract class _VideoPageController with Store {
     this.currentRoad = currentRoad;
     logLines.clear();
     String chapterName = roadList[currentRoad].identifier[episode - 1];
-    KazumiLogger().log(Level.info, '跳转到$chapterName');
+    bangumiLogger().log(Level.info, '跳转到$chapterName');
     String urlItem = roadList[currentRoad].data[episode - 1];
     if (urlItem.contains(currentPlugin.baseUrl) ||
         urlItem.contains(currentPlugin.baseUrl.replaceAll('https', 'http'))) {

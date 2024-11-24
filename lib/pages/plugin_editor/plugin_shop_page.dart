@@ -1,15 +1,15 @@
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
-import 'package:kazumi/pages/menu/menu.dart';
-import 'package:kazumi/pages/menu/side_menu.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/pages/menu/menu.dart';
+import 'package:bangumi/pages/menu/side_menu.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/request/api.dart';
+import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/request/api.dart';
 import 'package:provider/provider.dart';
 
 class PluginShopPage extends StatefulWidget {
@@ -147,7 +147,7 @@ class _PluginShopPageState extends State<PluginShopPage> {
                                     if (int.parse(pluginHTTPItem.api) >
                                         Api.apiLevel) {
                                       SmartDialog.showToast(
-                                          'kazumi版本过低, 此规则不兼容当前版本');
+                                          'bangumi版本过低, 此规则不兼容当前版本');
                                       return;
                                     }
                                     await pluginsController
@@ -173,7 +173,7 @@ class _PluginShopPageState extends State<PluginShopPage> {
                                     if (int.parse(pluginHTTPItem.api) >
                                         Api.apiLevel) {
                                       SmartDialog.showToast(
-                                          'kazumi版本过低, 此规则不兼容当前版本');
+                                          'bangumi版本过低, 此规则不兼容当前版本');
                                       return;
                                     }
                                     await pluginsController

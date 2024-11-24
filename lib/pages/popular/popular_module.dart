@@ -1,4 +1,4 @@
-import 'package:kazumi/pages/popular/popular_page.dart';
+import 'package:bangumi/pages/popular/popular_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class PopularModule extends Module {

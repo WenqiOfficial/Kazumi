@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/plugins/plugins.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
-import 'package:kazumi/pages/menu/menu.dart';
-import 'package:kazumi/pages/menu/side_menu.dart';
+import 'package:bangumi/plugins/plugins.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/pages/menu/menu.dart';
+import 'package:bangumi/pages/menu/side_menu.dart';
 import 'package:provider/provider.dart';
 
 class PluginViewPage extends StatefulWidget {
@@ -95,7 +95,7 @@ class _PluginViewPageState extends State<PluginViewPage> {
                     try {
                       await pluginsController.savePluginToJsonFile(
                           Plugin.fromJson(
-                              json.decode(Utils.kazumiBase64ToJson(msg))));
+                              json.decode(Utils.bangumiBase64ToJson(msg))));
                       SmartDialog.showToast('导入成功');
                     } catch (e) {
                       SmartDialog.dismiss();
@@ -188,7 +188,7 @@ class _PluginViewPageState extends State<PluginViewPage> {
                                     return AlertDialog(
                                       title: const Text('规则链接'),
                                       content: SelectableText(
-                                        Utils.jsonToKazumiBase64(json.encode(
+                                        Utils.jsonTobangumiBase64(json.encode(
                                             pluginsController.pluginList[index]
                                                 .toJson())),
                                         style: const TextStyle(
@@ -210,7 +210,7 @@ class _PluginViewPageState extends State<PluginViewPage> {
                                         TextButton(
                                           onPressed: () {
                                             Utils.copyToClipboard(
-                                                Utils.jsonToKazumiBase64(json
+                                                Utils.jsonTobangumiBase64(json
                                                     .encode(pluginsController
                                                         .pluginList[index]
                                                         .toJson())));

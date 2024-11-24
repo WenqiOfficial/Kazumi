@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/popular/popular_controller.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/utils/constans.dart';
-import 'package:kazumi/pages/error/http_error.dart';
+import 'package:bangumi/pages/popular/popular_controller.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/utils/constans.dart';
+import 'package:bangumi/pages/error/http_error.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kazumi/bean/card/bangumi_card.dart';
+import 'package:bangumi/bean/card/bangumi_card.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter/services.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 class PopularPage extends StatefulWidget {
   const PopularPage({super.key});
@@ -45,7 +45,7 @@ class _PopularPageState extends State<PopularPage>
               scrollController.position.maxScrollExtent - 200 &&
           popularController.isLoadingMore == false &&
           popularController.searchKeyword == '') {
-        KazumiLogger().log(Level.info, 'Popular is loading more');
+        bangumiLogger().log(Level.info, 'Popular is loading more');
         popularController.queryBangumiListFeed(
             type: 'onload', tag: popularController.currentTag);
       }

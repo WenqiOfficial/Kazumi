@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:kazumi/modules/search/plugin_search_module.dart';
-import 'package:kazumi/modules/roads/road_module.dart';
-import 'package:kazumi/request/request.dart';
+import 'package:bangumi/modules/search/plugin_search_module.dart';
+import 'package:bangumi/modules/roads/road_module.dart';
+import 'package:bangumi/request/request.dart';
 import 'package:html/parser.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 import 'package:xpath_selector_html_parser/xpath_selector_html_parser.dart';
 
 class Plugin {
@@ -153,7 +153,7 @@ class Plugin {
           src: element.queryXPath(searchResult).node!.attributes['href'] ?? '',
         );
         searchItems.add(searchItem);
-        KazumiLogger().log(Level.info,
+        bangumiLogger().log(Level.info,
             '$name ${element.queryXPath(searchName).node!.text ?? ''} $baseUrl${element.queryXPath(searchResult).node!.attributes['href'] ?? ''}');
       } catch (_) {}
     });

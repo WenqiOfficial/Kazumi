@@ -1,7 +1,7 @@
 import 'package:canvas_danmaku/canvas_danmaku.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/storage.dart';
 
 class DanmakuSettingsWindow extends StatefulWidget {
   final DanmakuController danmakuController;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
-import 'package:kazumi/utils/webdav.dart';
+import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/utils/webdav.dart';
 
 class WebDavEditorPage extends StatefulWidget {
   const WebDavEditorPage({

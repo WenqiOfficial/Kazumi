@@ -1,35 +1,35 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:kazumi/utils/logger.dart';
-import 'package:kazumi/utils/remote.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/utils/webdav.dart';
+import 'package:bangumi/utils/logger.dart';
+import 'package:bangumi/utils/remote.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/utils/webdav.dart';
 import 'package:logger/logger.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart';
-import 'package:kazumi/pages/player/player_controller.dart';
+import 'package:bangumi/pages/player/player_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:canvas_danmaku/canvas_danmaku.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter_volume_controller/flutter_volume_controller.dart';
-import 'package:kazumi/pages/history/history_controller.dart';
-import 'package:kazumi/pages/info/info_controller.dart';
-import 'package:kazumi/pages/favorite/favorite_controller.dart';
+import 'package:bangumi/pages/history/history_controller.dart';
+import 'package:bangumi/pages/info/info_controller.dart';
+import 'package:bangumi/pages/favorite/favorite_controller.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/request/damaku.dart';
-import 'package:kazumi/modules/danmaku/danmaku_search_response.dart';
-import 'package:kazumi/modules/danmaku/danmaku_episode_response.dart';
-import 'package:kazumi/bean/appbar/drag_to_move_bar.dart' as dtb;
-import 'package:kazumi/pages/settings/danmaku/danmaku_settings_window.dart';
-import 'package:kazumi/utils/constans.dart';
+import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/request/damaku.dart';
+import 'package:bangumi/modules/danmaku/danmaku_search_response.dart';
+import 'package:bangumi/modules/danmaku/danmaku_episode_response.dart';
+import 'package:bangumi/bean/appbar/drag_to_move_bar.dart' as dtb;
+import 'package:bangumi/pages/settings/danmaku/danmaku_settings_window.dart';
+import 'package:bangumi/utils/constans.dart';
 
 class PlayerItem extends StatefulWidget {
   const PlayerItem(
@@ -322,7 +322,7 @@ class _PlayerItemState extends State<PlayerItem>
         danmakuController.clear();
         return;
       } catch (e) {
-        KazumiLogger().log(Level.error, '卸载播放器错误 ${e.toString()}');
+        bangumiLogger().log(Level.error, '卸载播放器错误 ${e.toString()}');
       }
     }
 
@@ -332,7 +332,7 @@ class _PlayerItemState extends State<PlayerItem>
         webDav.updateHistory();
       } catch (e) {
         SmartDialog.showToast('同步记录失败 ${e.toString()}');
-        KazumiLogger().log(Level.error, '同步记录失败 ${e.toString()}');
+        bangumiLogger().log(Level.error, '同步记录失败 ${e.toString()}');
       }
     }
     if (mounted) {
@@ -758,7 +758,7 @@ class _PlayerItemState extends State<PlayerItem>
                             try {
                               playerController.playOrPause();
                             } catch (e) {
-                              KazumiLogger()
+                              bangumiLogger()
                                   .log(Level.error, '播放器内部错误 ${e.toString()}');
                             }
                           }
@@ -777,7 +777,7 @@ class _PlayerItemState extends State<PlayerItem>
                                   .seek(playerController.currentPosition);
                               playerTimer = getPlayerTimer();
                             } catch (e) {
-                              KazumiLogger()
+                              bangumiLogger()
                                   .log(Level.error, '播放器内部错误 ${e.toString()}');
                             }
                           }
@@ -799,7 +799,7 @@ class _PlayerItemState extends State<PlayerItem>
                                   .seek(playerController.currentPosition);
                               playerTimer = getPlayerTimer();
                             } catch (e) {
-                              KazumiLogger().log(Level.error, e.toString());
+                              bangumiLogger().log(Level.error, e.toString());
                             }
                           }
                           // Esc键被按下

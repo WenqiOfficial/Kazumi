@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:kazumi/request/api.dart';
+import 'package:bangumi/request/api.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 

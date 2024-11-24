@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../pages/player/player_controller.dart';
@@ -18,7 +18,7 @@ class RemotePlay {
   // 而对于 iOS / Mac 设备，由于没有设备，无法进行开发与验证。
   // 可行的 iOS / Mac 处理代码，请参见 ios/Runner/AppDelegate.swift 的注释部分。
 
-  static const platform = MethodChannel('com.predidit.kazumi/intent');
+  static const platform = MethodChannel('com.predidit.bangumi/intent');
 
   castVideo(BuildContext context) async {
     final searcher = DLNAManager();
@@ -103,7 +103,7 @@ class RemotePlay {
                                     DLNADevice(value.info).setUrl(video);
                                     DLNADevice(value.info).play();
                                   } catch (e) {
-                                    KazumiLogger()
+                                    bangumiLogger()
                                         .log(Level.error, 'DLNA Error: $e');
                                     SmartDialog.showNotify(
                                         msg:
@@ -167,7 +167,7 @@ class RemotePlay {
           'openWithMime', <String, String>{'url': url, 'mimeType': mimeType});
       return true;
     } on PlatformException catch (e) {
-      KazumiLogger()
+      bangumiLogger()
           .log(Level.error, "Failed to open with mime: '${e.message}'.");
       return false;
     }

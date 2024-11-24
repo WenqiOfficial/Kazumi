@@ -1,6 +1,6 @@
-import 'package:kazumi/modules/bangumi/bangumi_item.dart';
-import 'package:kazumi/modules/history/history_module.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/modules/bangumi/bangumi_item.dart';
+import 'package:bangumi/modules/history/history_module.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 

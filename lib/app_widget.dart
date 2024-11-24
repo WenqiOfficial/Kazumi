@@ -6,13 +6,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:kazumi/utils/webdav.dart';
+import 'package:bangumi/utils/webdav.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -76,7 +76,7 @@ class _AppWidgetState extends State<AppWidget>
           var webDav = WebDav();
           webDav.updateHistory();
         } catch (e) {
-          KazumiLogger().log(Level.error, '同步记录失败 ${e.toString()}');
+          bangumiLogger().log(Level.error, '同步记录失败 ${e.toString()}');
         }
       }
     } else if (state == AppLifecycleState.resumed) {
@@ -88,7 +88,7 @@ class _AppWidgetState extends State<AppWidget>
           var webDav = WebDav();
           webDav.downloadHistory();
         } catch (e) {
-          KazumiLogger().log(Level.error, '同步观看记录失败 ${e.toString()}');
+          bangumiLogger().log(Level.error, '同步观看记录失败 ${e.toString()}');
         }
       }
     } else if (state == AppLifecycleState.inactive) {
@@ -101,7 +101,7 @@ class _AppWidgetState extends State<AppWidget>
             var webDav = WebDav();
             webDav.updateHistory();
           } catch (e) {
-            KazumiLogger().log(Level.error, '同步记录失败 ${e.toString()}');
+            bangumiLogger().log(Level.error, '同步记录失败 ${e.toString()}');
           }
         }
       }
@@ -113,19 +113,19 @@ class _AppWidgetState extends State<AppWidget>
       await trayManager.setIcon('assets/images/logo/logo_lanczos.ico');
     } else if (Platform.environment.containsKey('FLATPAK_ID') ||
         Platform.environment.containsKey('SNAP')) {
-      await trayManager.setIcon('io.github.Predidit.Kazumi');
+      await trayManager.setIcon('io.github.Predidit.bangumi');
     } else {
       await trayManager.setIcon('assets/images/logo/logo_rounded.png');
     }
 
     if (!Platform.isLinux) {
-      await trayManager.setToolTip('Kazumi');
+      await trayManager.setToolTip('bangumi');
     }
 
     Menu trayMenu = Menu(items: [
       MenuItem(key: 'show_window', label: '显示窗口'),
       MenuItem.separator(),
-      MenuItem(key: 'exit', label: '退出 Kazumi')
+      MenuItem(key: 'exit', label: '退出 bangumi')
     ]);
     await trayManager.setContextMenu(trayMenu);
   }
@@ -158,7 +158,7 @@ class _AppWidgetState extends State<AppWidget>
       dark: oledEnhance ? oledDarkTheme : defaultDarkTheme,
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) => MaterialApp.router(
-        title: "Kazumi",
+        title: "bangumi",
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
         supportedLocales: const [
           Locale.fromSubtags(
@@ -189,7 +189,7 @@ class _AppWidgetState extends State<AppWidget>
           FlutterDisplayMode.setPreferredMode(preferred);
         });
       } catch (e) {
-        KazumiLogger().log(Level.error, '高帧率设置失败 ${e.toString()}');
+        bangumiLogger().log(Level.error, '高帧率设置失败 ${e.toString()}');
       }
     }
 

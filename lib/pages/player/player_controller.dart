@@ -1,16 +1,16 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:video_player/video_player.dart';
-import 'package:kazumi/modules/danmaku/danmaku_module.dart';
+import 'package:bangumi/modules/danmaku/danmaku_module.dart';
 import 'package:mobx/mobx.dart';
 import 'package:canvas_danmaku/canvas_danmaku.dart';
-import 'package:kazumi/request/damaku.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
+import 'package:bangumi/request/damaku.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/logger.dart';
+import 'package:bangumi/utils/utils.dart';
 
 part 'player_controller.g.dart';
 
@@ -72,12 +72,12 @@ abstract class _PlayerController with Store {
     try {
       mediaPlayer.dispose();
     } catch (_) {}
-    KazumiLogger().log(Level.info, 'VideoItem开始初始化');
+    bangumiLogger().log(Level.info, 'VideoItem开始初始化');
     int episodeFromTitle = 0;
     try {
       episodeFromTitle = Utils.extractEpisodeNumber(videoPageController.roadList[videoPageController.currentRoad].identifier[videoPageController.currentEspisode - 1]);
     } catch (e) {
-      KazumiLogger().log(Level.error, '从标题解析集数错误 ${e.toString()}');
+      bangumiLogger().log(Level.error, '从标题解析集数错误 ${e.toString()}');
     }
     if (episodeFromTitle == 0) {
       episodeFromTitle = videoPageController.currentEspisode;
@@ -94,7 +94,7 @@ abstract class _PlayerController with Store {
       await mediaPlayer.play();
     }
     setPlaybackSpeed(playerSpeed);
-    KazumiLogger().log(Level.info, 'VideoURL初始化完成');
+    bangumiLogger().log(Level.info, 'VideoURL初始化完成');
     // 加载弹幕
     loading = false;
   }
@@ -106,9 +106,9 @@ abstract class _PlayerController with Store {
     } else {
       userAgent = videoPageController.currentPlugin.userAgent;
     }
-    KazumiLogger().log(Level.info, 'media_kit UA: $userAgent');
+    bangumiLogger().log(Level.info, 'media_kit UA: $userAgent');
     String referer = videoPageController.currentPlugin.referer;
-    KazumiLogger().log(Level.info, 'media_kit Referer: $referer');
+    bangumiLogger().log(Level.info, 'media_kit Referer: $referer');
     var httpHeaders = {
       'user-agent': userAgent,
       if (referer.isNotEmpty) 'referer': referer,
@@ -118,11 +118,11 @@ abstract class _PlayerController with Store {
     mediaPlayer.addListener(() {
       if (mediaPlayer.value.hasError && !mediaPlayer.value.isCompleted) {
         SmartDialog.showToast('播放器内部错误 ${mediaPlayer.value.errorDescription}');
-        KazumiLogger().log(Level.error, 'Player inent error. ${mediaPlayer.value.errorDescription} $videoUrl');
+        bangumiLogger().log(Level.error, 'Player inent error. ${mediaPlayer.value.errorDescription} $videoUrl');
       }
     });
     await mediaPlayer.initialize();
-    KazumiLogger().log(Level.info, 'videoController 配置成功 $videoUrl');
+    bangumiLogger().log(Level.info, 'videoController 配置成功 $videoUrl');
     return mediaPlayer;
   }
 
@@ -131,7 +131,7 @@ abstract class _PlayerController with Store {
     try {
       mediaPlayer.setPlaybackSpeed(playerSpeed);
     } catch (e) {
-      KazumiLogger().log(Level.error, '设置播放速度失败 ${e.toString()}');
+      bangumiLogger().log(Level.error, '设置播放速度失败 ${e.toString()}');
     }
   }
 
@@ -161,25 +161,25 @@ abstract class _PlayerController with Store {
   }
 
   Future getDanDanmaku(String title, int episode) async {
-    KazumiLogger().log(Level.info, '尝试获取弹幕 $title');
+    bangumiLogger().log(Level.info, '尝试获取弹幕 $title');
     try {
       danDanmakus.clear();
       bangumiID = await DanmakuRequest.getBangumiID(title);
       var res = await DanmakuRequest.getDanDanmaku(bangumiID, episode);
       addDanmakus(res);
     } catch (e) {
-      KazumiLogger().log(Level.warning, '获取弹幕错误 ${e.toString()}');
+      bangumiLogger().log(Level.warning, '获取弹幕错误 ${e.toString()}');
     }
   }
 
   Future getDanDanmakuByEpisodeID(int episodeID) async {
-    KazumiLogger().log(Level.info, '尝试获取弹幕 $episodeID');
+    bangumiLogger().log(Level.info, '尝试获取弹幕 $episodeID');
     try {
       danDanmakus.clear();
       var res = await DanmakuRequest.getDanDanmakuByEpisodeID(episodeID);
       addDanmakus(res);
     } catch (e) {
-      KazumiLogger().log(Level.warning, '获取弹幕错误 ${e.toString()}');
+      bangumiLogger().log(Level.warning, '获取弹幕错误 ${e.toString()}');
     }
   }
 

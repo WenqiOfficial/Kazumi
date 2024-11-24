@@ -5,16 +5,16 @@ import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:crypto/crypto.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:kazumi/request/api.dart';
+import 'package:bangumi/request/api.dart';
 import 'package:screen_pixel/screen_pixel.dart';
-import 'package:kazumi/utils/constans.dart';
+import 'package:bangumi/utils/constans.dart';
 import 'package:logger/logger.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -374,16 +374,16 @@ class Utils {
     return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${secs.floor().toString().padLeft(2, '0')}';
   }
 
-  static String jsonToKazumiBase64(String jsonStr) {
+  static String jsonTobangumiBase64(String jsonStr) {
     String base64Str = base64Encode(utf8.encode(jsonStr));
-    return 'kazumi://$base64Str';
+    return 'bangumi://$base64Str';
   }
 
-  static String kazumiBase64ToJson(String kazumiBase64Str) {
-    if (!kazumiBase64Str.startsWith('kazumi://')) {
+  static String bangumiBase64ToJson(String bangumiBase64Str) {
+    if (!bangumiBase64Str.startsWith('bangumi://')) {
       return '';
     }
-    String base64Str = kazumiBase64Str.substring(9);
+    String base64Str = bangumiBase64Str.substring(9);
     String jsonStr = utf8.decode(base64.decode(base64Str));
     return jsonStr;
   }
@@ -486,7 +486,7 @@ class Utils {
   /// 判断是否分屏模式 (android only)
   static Future<bool> isInMultiWindowMode() async {
     if (Platform.isAndroid) {
-      const platform = MethodChannel('com.predidit.kazumi/intent');
+      const platform = MethodChannel('com.predidit.bangumi/intent');
       try {
         final bool result =
             await platform.invokeMethod('checkIfInMultiWindowMode');
@@ -501,7 +501,7 @@ class Utils {
 
   static enterWindowsFullscreen() async {
     if (Platform.isWindows) {
-      const platform = MethodChannel('com.predidit.kazumi/intent');
+      const platform = MethodChannel('com.predidit.bangumi/intent');
       try {
         await platform.invokeMethod('enterFullscreen');
       } on PlatformException catch (e) {
@@ -512,7 +512,7 @@ class Utils {
 
   static exitWindowsFullscreen() async {
     if (Platform.isWindows) {
-      const platform = MethodChannel('com.predidit.kazumi/intent');
+      const platform = MethodChannel('com.predidit.bangumi/intent');
       try {
         await platform.invokeMethod('exitFullscreen');
       } on PlatformException catch (e) {
@@ -576,7 +576,7 @@ class Utils {
         }
       }
     } catch (exception, stacktrace) {
-      KazumiLogger()
+      bangumiLogger()
           .log(Level.error, exception.toString(), stackTrace: stacktrace);
     }
   }
@@ -596,7 +596,7 @@ class Utils {
         );
       }
     } catch (exception, stacktrace) {
-      KazumiLogger()
+      bangumiLogger()
           .log(Level.error, exception.toString(), stackTrace: stacktrace);
     }
   }

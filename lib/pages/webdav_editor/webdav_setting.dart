@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/bean/settings/settings.dart';
-import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/utils/webdav.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/bean/settings/settings.dart';
+import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/utils/webdav.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/pages/menu/menu.dart';
-import 'package:kazumi/pages/menu/side_menu.dart';
+import 'package:bangumi/pages/menu/menu.dart';
+import 'package:bangumi/pages/menu/side_menu.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
 
 class WebDavSettingsPage extends StatefulWidget {
   const WebDavSettingsPage({super.key});

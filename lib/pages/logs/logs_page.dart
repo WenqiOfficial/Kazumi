@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 class LogsPage extends StatefulWidget {
@@ -34,7 +34,7 @@ class _LogsPageState extends State<LogsPage> {
   Future<File> _getLogsFile() async {
     final directory = await getApplicationSupportDirectory();
     final path = directory.path;
-    return File('$path/logs/kazumi_logs.log');
+    return File('$path/logs/bangumi_logs.log');
   }
 
   Future<void> _clearLogs() async {

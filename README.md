@@ -1,4 +1,4 @@
-# Kazumi
+# bangumi
 使用 flutter 开发的基于自定义规则的番剧采集与在线观看程序。使用最多五行基于 `Xpath` 语法的选择器构建自己的规则。支持规则导入与规则分享。绝赞开发中 (～￣▽￣)～
 
 ## 支持平台
@@ -52,22 +52,22 @@
 
 ## 下载
 
-通过本页面 [release](https://github.com/Predidit/Kazumi/releases) 选项卡下载。
+通过本页面 [release](https://github.com/Predidit/bangumi/releases) 选项卡下载。
 
-<a href="https://github.com/Predidit/Kazumi/releases">
+<a href="https://github.com/Predidit/bangumi/releases">
   <img src="static/svg/get_it_on_github.svg" alt="Get it on Github" width="200"/>
 </a>
 
 对于 GNU/Linux 用户，可以从 Flathub 安装：
 
 <span style="display:inline-block; width:5px;"></span>
-<a href="https://flathub.org/apps/io.github.Predidit.Kazumi">
+<a href="https://flathub.org/apps/io.github.Predidit.bangumi">
   <img src="https://flathub.org/api/badge?locale=en" alt="Get it on Flathub" width="180"/>
 </a>
 
 ## 贡献
 
-欢迎向我们的 [规则仓库](https://github.com/Predidit/KazumiRules) 提交您的自定义规则。您可以自由选择是否在规则中留下您的ID
+欢迎向我们的 [规则仓库](https://github.com/Predidit/bangumiRules) 提交您的自定义规则。您可以自由选择是否在规则中留下您的ID
 
 ## Q&A
 
@@ -84,7 +84,7 @@ A: 本程序在视频播放时, 会尽可能多地缓存视频到内存, 以提�
 
 #### Q: 为什么少数番剧无法通过外部播放器观看
 
-A: 部分视频源的番剧使用了反盗链措施, 这可以被 kazumi 解决, 但无法被外部播放器解决。
+A: 部分视频源的番剧使用了反盗链措施, 这可以被 bangumi 解决, 但无法被外部播放器解决。
 
 #### Q: 为什么下载的Linux版本缺少图标和托盘功能。
 

@@ -1,13 +1,13 @@
-import 'package:kazumi/modules/bangumi/bangumi_item.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
-import 'package:kazumi/plugins/plugins.dart';
+import 'package:bangumi/modules/bangumi/bangumi_item.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
+import 'package:bangumi/plugins/plugins.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/modules/search/plugin_search_module.dart';
-import 'package:kazumi/request/bangumi.dart';
+import 'package:bangumi/modules/search/plugin_search_module.dart';
+import 'package:bangumi/request/bangumi.dart';
 import 'package:mobx/mobx.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 part 'info_controller.g.dart';
 
@@ -64,9 +64,9 @@ abstract class _InfoController with Store {
             .addAll(await plugin.querychapterRoads(url));
       }
     }
-    KazumiLogger()
+    bangumiLogger()
         .log(Level.info, '播放列表长度 ${videoPageController.roadList.length}');
-    KazumiLogger().log(
+    bangumiLogger().log(
         Level.info, '第一播放列表选集数 ${videoPageController.roadList[0].data.length}');
   }
 }

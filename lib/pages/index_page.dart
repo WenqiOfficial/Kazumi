@@ -1,7 +1,7 @@
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:kazumi/pages/menu/menu.dart';
-import 'package:kazumi/pages/menu/side_menu.dart';
+import 'package:bangumi/pages/menu/menu.dart';
+import 'package:bangumi/pages/menu/side_menu.dart';
 
 
 class IndexPage extends StatefulWidget {

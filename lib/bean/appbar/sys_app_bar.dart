@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter/services.dart';
@@ -42,10 +42,10 @@ class SysAppBar extends StatelessWidget implements PreferredSizeWidget {
         builder: (context) {
           return AlertDialog(
             title: const Text('退出确认'),
-            content: const Text('您想要退出 Kazumi 吗？'),
+            content: const Text('您想要退出 bangumi 吗？'),
             actions: [
               TextButton(
-                  onPressed: () => exit(0), child: const Text('退出 Kazumi')),
+                  onPressed: () => exit(0), child: const Text('退出 bangumi')),
               TextButton(
                   onPressed: () {
                     SmartDialog.dismiss();

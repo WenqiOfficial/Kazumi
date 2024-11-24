@@ -1,6 +1,6 @@
-import 'package:kazumi/pages/plugin_editor/plugin_view_page.dart';
-import 'package:kazumi/pages/plugin_editor/plugin_editor_page.dart';
-import 'package:kazumi/pages/plugin_editor/plugin_shop_page.dart';
+import 'package:bangumi/pages/plugin_editor/plugin_view_page.dart';
+import 'package:bangumi/pages/plugin_editor/plugin_editor_page.dart';
+import 'package:bangumi/pages/plugin_editor/plugin_shop_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class PluginModule extends Module {

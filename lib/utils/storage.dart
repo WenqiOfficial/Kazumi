@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:kazumi/modules/bangumi/bangumi_item.dart';
-import 'package:kazumi/modules/history/history_module.dart';
+import 'package:bangumi/modules/bangumi/bangumi_item.dart';
+import 'package:bangumi/modules/history/history_module.dart';
 
 class GStorage {
   static late Box<BangumiItem> favorites;

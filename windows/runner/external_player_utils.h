@@ -1,5 +1,5 @@
-// This file is a part of Kazumi
-// (https://github.com/Predidit/Kazumi).
+// This file is a part of bangumi
+// (https://github.com/Predidit/bangumi).
 //
 // Copyright © 2024 Predidit
 // All rights reserved.

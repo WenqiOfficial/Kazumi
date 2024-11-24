@@ -1,4 +1,4 @@
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 

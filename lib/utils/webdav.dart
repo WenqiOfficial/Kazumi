@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:webdav_client/webdav_client.dart' as webdav;
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 class WebDav {
   late String webDavURL;
@@ -34,30 +34,30 @@ class WebDav {
     );
     client.setHeaders({'accept-charset': 'utf-8'});
     try {
-      // KazumiLogger().log(Level.warning, 'webDav backup diretory not exists, creating');
-      await client.mkdir('/kazumiSync');
-      KazumiLogger().log(Level.info, 'webDav backup diretory create success');
+      // bangumiLogger().log(Level.warning, 'webDav backup diretory not exists, creating');
+      await client.mkdir('/bangumiSync');
+      bangumiLogger().log(Level.info, 'webDav backup diretory create success');
     } catch (_) {
-      KazumiLogger().log(Level.error, 'webDav backup diretory create failed');
+      bangumiLogger().log(Level.error, 'webDav backup diretory create failed');
     }
   }
 
   Future update(String boxName) async {
     var directory = await getApplicationSupportDirectory();
     try {
-      await client.remove('/kazumiSync/$boxName.tmp.cache');
+      await client.remove('/bangumiSync/$boxName.tmp.cache');
     } catch (_) {}
-    await client.writeFromFile('${directory.path}/hive/$boxName.hive', '/kazumiSync/$boxName.tmp.cache',
+    await client.writeFromFile('${directory.path}/hive/$boxName.hive', '/bangumiSync/$boxName.tmp.cache',
         onProgress: (c, t) {
       // print(c / t);
     });
     try {
-      await client.remove('/kazumiSync/$boxName.tmp');
+      await client.remove('/bangumiSync/$boxName.tmp');
     } catch (_) {
-      KazumiLogger().log(Level.warning, 'webDav former backup file not exist');
+      bangumiLogger().log(Level.warning, 'webDav former backup file not exist');
     }
     await client.rename(
-        '/kazumiSync/$boxName.tmp.cache', '/kazumiSync/$boxName.tmp', true);
+        '/bangumiSync/$boxName.tmp.cache', '/bangumiSync/$boxName.tmp', true);
   }
 
   Future updateHistory() async {
@@ -77,7 +77,7 @@ class WebDav {
     if (await existingFile.exists()) {
       await existingFile.delete();
     }
-    await client.read2File('/kazumiSync/$fileName', existingFile.path,
+    await client.read2File('/bangumiSync/$fileName', existingFile.path,
         onProgress: (c, t) {
       // print(c / t);
     });
@@ -93,7 +93,7 @@ class WebDav {
     if (await existingFile.exists()) {
       await existingFile.delete();
     }
-    await client.read2File('/kazumiSync/$fileName', existingFile.path,
+    await client.read2File('/bangumiSync/$fileName', existingFile.path,
         onProgress: (c, t) {
       // print(c / t);
     });

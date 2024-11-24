@@ -54,5 +54,5 @@ body:
       options:
         - label: issue 列表中，没有我发现的这个 Bug
           required: true
-        - label: 我正在使用最新版本的 Kazumi
+        - label: 我正在使用最新版本的 bangumi
           required: true

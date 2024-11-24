@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/material.dart';
 // import 'package:hive/hive.dart';
-// import 'package:kazumi/utils/storage.dart';
-import 'package:kazumi/request/interceptor.dart';
-import 'package:kazumi/utils/utils.dart';
+// import 'package:bangumi/utils/storage.dart';
+import 'package:bangumi/request/interceptor.dart';
+import 'package:bangumi/utils/utils.dart';
 
 class Request {
   static final Request _instance = Request._internal();

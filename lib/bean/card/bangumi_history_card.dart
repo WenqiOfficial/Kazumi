@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:kazumi/pages/history/history_controller.dart';
-import 'package:kazumi/plugins/plugins.dart';
-import 'package:kazumi/utils/constans.dart';
+import 'package:bangumi/pages/history/history_controller.dart';
+import 'package:bangumi/plugins/plugins.dart';
+import 'package:bangumi/utils/constans.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:kazumi/bean/card/network_img_layer.dart';
-import 'package:kazumi/pages/info/info_controller.dart';
+import 'package:bangumi/bean/card/network_img_layer.dart';
+import 'package:bangumi/pages/info/info_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/favorite/favorite_controller.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
-import 'package:kazumi/modules/history/history_module.dart';
-import 'package:kazumi/plugins/plugins_controller.dart';
+import 'package:bangumi/pages/favorite/favorite_controller.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
+import 'package:bangumi/modules/history/history_module.dart';
+import 'package:bangumi/plugins/plugins_controller.dart';
 import 'package:logger/logger.dart';
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 // 视频历史记录卡片 - 水平布局
 class BangumiHistoryCardV extends StatefulWidget {
@@ -77,7 +77,7 @@ class _BangumiHistoryCardVState extends State<BangumiHistoryCardV> {
               SmartDialog.dismiss();
               Modular.to.pushNamed('/video/');
             } catch (e) {
-              KazumiLogger().log(Level.warning, e.toString());
+              bangumiLogger().log(Level.warning, e.toString());
               SmartDialog.dismiss();
             }
           },

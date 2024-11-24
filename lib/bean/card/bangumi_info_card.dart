@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kazumi/utils/constans.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/modules/bangumi/bangumi_item.dart';
-import 'package:kazumi/bean/card/network_img_layer.dart';
+import 'package:bangumi/utils/constans.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/modules/bangumi/bangumi_item.dart';
+import 'package:bangumi/bean/card/network_img_layer.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/favorite/favorite_controller.dart';
+import 'package:bangumi/pages/favorite/favorite_controller.dart';
 
 // 视频卡片 - 水平布局
 class BangumiInfoCardV extends StatefulWidget {

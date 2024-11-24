@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kazumi/bean/settings/settings.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/bean/settings/settings.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:hive/hive.dart';
-import 'package:kazumi/bean/appbar/sys_app_bar.dart';
+import 'package:bangumi/bean/appbar/sys_app_bar.dart';
 
 class DanmakuSourceSettingsPage extends StatefulWidget {
   const DanmakuSourceSettingsPage({super.key});

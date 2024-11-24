@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
-import 'package:kazumi/plugins/plugins.dart';
-import 'package:kazumi/request/plugin.dart';
-import 'package:kazumi/modules/plugin/plugin_http_module.dart';
+import 'package:bangumi/plugins/plugins.dart';
+import 'package:bangumi/request/plugin.dart';
+import 'package:bangumi/modules/plugin/plugin_http_module.dart';
 import 'package:logger/logger.dart';
 import 'package:path/path.dart' as path;
-import 'package:kazumi/utils/logger.dart';
+import 'package:bangumi/utils/logger.dart';
 
 part 'plugins_controller.g.dart';
 
@@ -26,7 +26,7 @@ abstract class _PluginsController with Store {
 
     final directory = await getApplicationSupportDirectory();
     final pluginDirectory = Directory('${directory.path}/plugins');
-    KazumiLogger().log(Level.info, '插件目录 ${directory.path}/plugins');
+    bangumiLogger().log(Level.info, '插件目录 ${directory.path}/plugins');
 
     if (await pluginDirectory.exists()) {
       final jsonFiles = pluginDirectory
@@ -41,9 +41,9 @@ abstract class _PluginsController with Store {
         pluginList.add(Plugin.fromJson(data));
       }
 
-      KazumiLogger().log(Level.info, '当前插件数量 ${pluginList.length}');
+      bangumiLogger().log(Level.info, '当前插件数量 ${pluginList.length}');
     } else {
-      KazumiLogger().log(Level.warning, '插件目录不存在');
+      bangumiLogger().log(Level.warning, '插件目录不存在');
     }
   }
 
@@ -69,7 +69,7 @@ abstract class _PluginsController with Store {
       await file.writeAsString(jsonString);
     }
 
-    KazumiLogger().log(Level.info, '已将 ${jsonFiles.length} 个插件文件拷贝到 ${pluginDirectory.path}');
+    bangumiLogger().log(Level.info, '已将 ${jsonFiles.length} 个插件文件拷贝到 ${pluginDirectory.path}');
   }
 
   Future<void> savePluginToJsonFile(Plugin plugin) async {
@@ -90,7 +90,7 @@ abstract class _PluginsController with Store {
     final jsonData = jsonEncode(plugin.toJson());
     await newFile.writeAsString(jsonData);
 
-    KazumiLogger().log(Level.info, '已创建插件文件 $fileName');
+    bangumiLogger().log(Level.info, '已创建插件文件 $fileName');
   }
 
 Future<void> deletePluginJsonFile(Plugin plugin) async {
@@ -98,7 +98,7 @@ Future<void> deletePluginJsonFile(Plugin plugin) async {
   final pluginDirectory = Directory('${directory.path}/plugins');
 
   if (!await pluginDirectory.exists()) {
-    KazumiLogger().log(Level.warning, '插件目录不存在，无法删除文件');
+    bangumiLogger().log(Level.warning, '插件目录不存在，无法删除文件');
     return;
   }
 
@@ -116,9 +116,9 @@ Future<void> deletePluginJsonFile(Plugin plugin) async {
 
   if (targetFile != null) {
     await targetFile.delete();
-    KazumiLogger().log(Level.info, '已删除插件文件 ${path.basename(targetFile.path)}');
+    bangumiLogger().log(Level.info, '已删除插件文件 ${path.basename(targetFile.path)}');
   } else {
-    KazumiLogger().log(Level.warning, '插件文件 $fileName 不存在');
+    bangumiLogger().log(Level.warning, '插件文件 $fileName 不存在');
   }
 }
 

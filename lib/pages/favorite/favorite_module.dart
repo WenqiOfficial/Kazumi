@@ -1,4 +1,4 @@
-import 'package:kazumi/pages/favorite/favorite_page.dart';
+import 'package:bangumi/pages/favorite/favorite_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class FavoriteModule extends Module {

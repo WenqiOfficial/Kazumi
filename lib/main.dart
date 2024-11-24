@@ -1,16 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:kazumi/app_module.dart';
-import 'package:kazumi/app_widget.dart';
+import 'package:bangumi/app_module.dart';
+import 'package:bangumi/app_widget.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:kazumi/utils/storage.dart';
+import 'package:bangumi/utils/storage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:kazumi/request/request.dart';
+import 'package:bangumi/request/request.dart';
 import 'package:flutter/services.dart';
-import 'package:kazumi/utils/utils.dart';
+import 'package:bangumi/utils/utils.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:kazumi/pages/error/storage_error_page.dart';
+import 'package:bangumi/pages/error/storage_error_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

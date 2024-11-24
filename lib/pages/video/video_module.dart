@@ -1,7 +1,7 @@
-import 'package:kazumi/pages/video/video_page.dart';
+import 'package:bangumi/pages/video/video_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/webview/webview_controller.dart';
-import 'package:kazumi/pages/player/player_controller.dart';
+import 'package:bangumi/pages/webview/webview_controller.dart';
+import 'package:bangumi/pages/player/player_controller.dart';
 
 class VideoModule extends Module {
   @override

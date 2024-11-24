@@ -1,4 +1,4 @@
-import 'package:kazumi/pages/info/info_page.dart';
+import 'package:bangumi/pages/info/info_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class InfoModule extends Module {

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_windows/webview_windows.dart';
-import 'package:kazumi/utils/utils.dart';
-import 'package:kazumi/pages/webview/webview_controller.dart';
+import 'package:bangumi/utils/utils.dart';
+import 'package:bangumi/pages/webview/webview_controller.dart';
 
 class WebviewWindowsItemControllerImpel extends WebviewItemController<WebviewController> {
   Timer? ifrmaeParserTimer;

@@ -4,11 +4,11 @@ import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
-class KazumiLogger extends Logger {
-  KazumiLogger._internal() : super();
-  static final KazumiLogger _instance = KazumiLogger._internal();
+class bangumiLogger extends Logger {
+  bangumiLogger._internal() : super();
+  static final bangumiLogger _instance = bangumiLogger._internal();
 
-  factory KazumiLogger() {
+  factory bangumiLogger() {
     return _instance;
   }
 
@@ -18,7 +18,7 @@ class KazumiLogger extends Logger {
     if (level == Level.error) {
       String dir = (await getApplicationSupportDirectory()).path;
       final String logDir = p.join(dir, "logs");
-      final String filename = p.join(logDir, "kazumi_logs.log");
+      final String filename = p.join(logDir, "bangumi_logs.log");
 
       final directory = Directory(logDir);
       if (!await directory.exists()) {
@@ -37,7 +37,7 @@ class KazumiLogger extends Logger {
 Future<File> getLogsPath() async {
   String dir = (await getApplicationSupportDirectory()).path;
   final String logDir = p.join(dir, "logs");
-  final String filename = p.join(logDir, "kazumi_logs.log");
+  final String filename = p.join(logDir, "bangumi_logs.log");
 
   final directory = Directory(logDir);
   if (!await directory.exists()) {
@@ -54,7 +54,7 @@ Future<File> getLogsPath() async {
 Future<bool> clearLogs() async {
   String dir = (await getApplicationSupportDirectory()).path;
   final String logDir = p.join(dir, "logs");
-  final String filename = p.join(logDir, "kazumi_logs.log");
+  final String filename = p.join(logDir, "bangumi_logs.log");
 
   // 确保日志文件夹存在
   final directory = Directory(logDir);

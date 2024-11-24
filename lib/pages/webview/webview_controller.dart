@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/video/video_controller.dart';
-import 'package:kazumi/pages/player/player_controller.dart';
-import 'package:kazumi/pages/webview/webview_controller_impel/webview_controller_impel.dart';
-import 'package:kazumi/pages/webview/webview_controller_impel/webview_windows_controller_impel.dart';
-import 'package:kazumi/pages/webview/webview_controller_impel/webview_linux_controller_impel.dart';
+import 'package:bangumi/pages/video/video_controller.dart';
+import 'package:bangumi/pages/player/player_controller.dart';
+import 'package:bangumi/pages/webview/webview_controller_impel/webview_controller_impel.dart';
+import 'package:bangumi/pages/webview/webview_controller_impel/webview_windows_controller_impel.dart';
+import 'package:bangumi/pages/webview/webview_controller_impel/webview_linux_controller_impel.dart';
 
 abstract class WebviewItemController<T> {
   // Webview controller

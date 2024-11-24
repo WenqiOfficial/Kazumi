@@ -24,7 +24,7 @@
             run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
             shell: bash
           - name: Echo build progress
-            run: echo "Kazumi_android_${{ env.tag }}.apk build progress"
+            run: echo "bangumi_android_${{ env.tag }}.apk build progress"
             shell: bash
           - name: Install dependencies
             run: |
@@ -48,14 +48,14 @@
             run: flutter build apk --split-per-abi
             shell: bash
           - name: Package android build output
-            run: cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk Kazumi_android_${env:tag}.apk
+            run: cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk bangumi_android_${env:tag}.apk
             shell: bash
 
           - name: Upload android outputs
             uses: actions/upload-artifact@v4
             with:
               name: android_outputs
-              path: Kazumi_android_*.apk
+              path: bangumi_android_*.apk
 
       flutter-build-windows:
         name: "Release for windows"
@@ -68,7 +68,7 @@
           - run: |
                   $tag = "${{ github.ref }}".Replace('refs/tags/', '')
                   echo "tag=$(echo $tag)" >> $env:GITHUB_ENV
-          - run: echo "Kazumi_windows_${env:tag}.zip build progress"
+          - run: echo "bangumi_windows_${env:tag}.zip build progress"
           - run: choco install yq
           - name: Enable Git longpaths
             run: git config --system core.longpaths true
@@ -97,13 +97,13 @@
           #     token: ${{ secrets.GITHUB_TOKEN }}
           # - run: Remove-Item -Path build/windows/x64/runner/Release/ffmpeg-7.dll -Force
           # - run: Expand-Archive -LiteralPath ffmpeg_windows_x64.zip -DestinationPath build/windows/x64/runner/Release      
-          - run: Compress-Archive build/windows/x64/runner/Release/* Kazumi_windows_${env:tag}.zip
+          - run: Compress-Archive build/windows/x64/runner/Release/* bangumi_windows_${env:tag}.zip
           - name: Upload windows outputs
             uses: actions/upload-artifact@v4
             with:
               name: windows_outputs
               path: |
-                Kazumi_windows_*.zip
+                bangumi_windows_*.zip
 
       flutter-build-linux:
         name: "Release for Linux"
@@ -116,7 +116,7 @@
             run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
             shell: bash
           - name: Echo build progress
-            run: echo "Kazumi_linux_${{ env.tag }}.tar.gz build progress"
+            run: echo "bangumi_linux_${{ env.tag }}.tar.gz build progress"
             shell: bash
           - name: Install dependencies
             run: |
@@ -146,22 +146,22 @@
           - name: Package linux build output
             run: |
               # Tarball package
-              tar -zcvf Kazumi_linux_${{ env.tag }}_amd64.tar.gz -C build/linux/x64/release/bundle .
+              tar -zcvf bangumi_linux_${{ env.tag }}_amd64.tar.gz -C build/linux/x64/release/bundle .
 
               # Debian package
-              mkdir Kazumi_linux_${{ env.tag }}_amd64
-              cd Kazumi_linux_${{ env.tag }}_amd64
-              mkdir -p opt/Kazumi
+              mkdir bangumi_linux_${{ env.tag }}_amd64
+              cd bangumi_linux_${{ env.tag }}_amd64
+              mkdir -p opt/bangumi
               mkdir -p usr/share/applications
               mkdir -p usr/share/icons/hicolor/512x512/apps
-              cp -r ../build/linux/x64/release/bundle/* opt/Kazumi
+              cp -r ../build/linux/x64/release/bundle/* opt/bangumi
               cp -r ../assets/linux/DEBIAN .
               chmod 0755 DEBIAN/postinst
               chmod 0755 DEBIAN/postrm
 
               cat>DEBIAN/control<<EOF
               Maintainer: madoka773 <valigarmanda55@gmail.com>
-              Package: Kazumi
+              Package: bangumi
               Version: ${{ env.tag }}
               Section: x11
               Priority: optional
@@ -169,17 +169,17 @@
               Essential: no
               Installed-Size: 34648
               Description: Watch Animes online with danmaku support.
-              Homepage: https://github.com/Predidit/Kazumi
+              Homepage: https://github.com/Predidit/bangumi
               Depends: libayatana-appindicator3-1,
                        gir1.2-ayatanaappindicator3-0.1,
                        libwebkit2gtk-4.1-0
               EOF
 
-              cp ../assets/linux/io.github.Predidit.Kazumi.desktop usr/share/applications
-              cp ../assets/images/logo/logo_linux.png usr/share/icons/hicolor/512x512/apps/io.github.Predidit.Kazumi.png
+              cp ../assets/linux/io.github.Predidit.bangumi.desktop usr/share/applications
+              cp ../assets/images/logo/logo_linux.png usr/share/icons/hicolor/512x512/apps/io.github.Predidit.bangumi.png
 
               cd ..
-              dpkg-deb --build --root-owner-group Kazumi_linux_${{ env.tag }}_amd64
+              dpkg-deb --build --root-owner-group bangumi_linux_${{ env.tag }}_amd64
             shell: bash
 
           - name: Upload linux outputs
@@ -187,8 +187,8 @@
             with:
               name: linux_outputs
               path: |
-                Kazumi_linux_*.tar.gz
-                Kazumi_linux_*.deb
+                bangumi_linux_*.tar.gz
+                bangumi_linux_*.deb
 
       flutter-build-ios:
         name: "Release for iOS"
@@ -201,7 +201,7 @@
           - name: Extract tag name
             run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
           - name: Echo build progress
-            run: echo "Kazumi_ios_${{ env.tag }}.ipa build progress"
+            run: echo "bangumi_ios_${{ env.tag }}.ipa build progress"
           - name: Set up Flutter
             uses: subosito/flutter-action@v2
             with:
@@ -215,12 +215,12 @@
             run: |
               mkdir Payload
               cp -R build/ios/iphoneos/Runner.app Payload/Runner.app
-              zip -q -r Kazumi_ios_${{ env.tag }}_no_sign.ipa Payload
+              zip -q -r bangumi_ios_${{ env.tag }}_no_sign.ipa Payload
           - name: Upload iOS build
             uses: actions/upload-artifact@v4
             with:
               name: ios_outputs
-              path: Kazumi_ios_*.ipa
+              path: bangumi_ios_*.ipa
 
       flutter-build-macos:
         name: "Release for Macos"
@@ -233,7 +233,7 @@
           - name: Extract tag name
             run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
           - name: Echo build progress
-            run: echo "Kazumi_macos_${{ env.tag }}.dmg build progress"
+            run: echo "bangumi_macos_${{ env.tag }}.dmg build progress"
           - name: Set up Flutter
             uses: subosito/flutter-action@v2
             with:
@@ -242,12 +242,12 @@
           - run: flutter pub get
           - run: flutter build macos --release
           - name: Create DMG
-            run: hdiutil create -format UDZO -srcfolder build/macos/Build/Products/Release/kazumi.app -volname kazumi Kazumi_macos_${{ env.tag }}.dmg
+            run: hdiutil create -format UDZO -srcfolder build/macos/Build/Products/Release/bangumi.app -volname bangumi bangumi_macos_${{ env.tag }}.dmg
           - name: Upload MacOS build
             uses: actions/upload-artifact@v4
             with:
               name: macos_outputs
-              path: Kazumi_macos_*.dmg
+              path: bangumi_macos_*.dmg
 
       release:
         name: "Release"
@@ -278,7 +278,7 @@
           - name: List files in windows_outputs directory
             run: ls -l windows_outputs   
           - name: Copy windows build file to root
-            run: cp windows_outputs/* Kazumi_windows_${{ env.tag }}.zip
+            run: cp windows_outputs/* bangumi_windows_${{ env.tag }}.zip
 
           - name: Download android build file
             uses: actions/download-artifact@v4
@@ -292,7 +292,7 @@
               mkdir build
               mkdir build/unsigned
               mkdir build/signed
-              cp android_outputs/* build/unsigned/Kazumi_android_${{ env.tag }}.apk
+              cp android_outputs/* build/unsigned/bangumi_android_${{ env.tag }}.apk
 
           - name: Download iOS build file
             uses: actions/download-artifact@v4
@@ -302,7 +302,7 @@
           - name: List files in ios_outputs directory
             run: ls -l ios_outputs   
           - name: Copy ios build file to root
-            run: cp ios_outputs/* Kazumi_ios_${{ env.tag }}_no_sign.ipa
+            run: cp ios_outputs/* bangumi_ios_${{ env.tag }}_no_sign.ipa
 
           - name: Download macos build file
             uses: actions/download-artifact@v4
@@ -312,7 +312,7 @@
           - name: List files in macos_outputs directory
             run: ls -l macos_outputs   
           - name: Copy macos build file to root
-            run: cp macos_outputs/* Kazumi_macos_${{ env.tag }}.dmg   
+            run: cp macos_outputs/* bangumi_macos_${{ env.tag }}.dmg   
             
           - name: Download linux build file
             uses: actions/download-artifact@v4
@@ -336,15 +336,15 @@
               BUILD_TOOLS_VERSION: "34.0.0"
 
           - name: Copy Signed android build file
-            run: cp ${{steps.sign_app.outputs.signedReleaseFile}} build/signed/Kazumi_android_${{ env.tag }}.apk
+            run: cp ${{steps.sign_app.outputs.signedReleaseFile}} build/signed/bangumi_android_${{ env.tag }}.apk
 
           - name: Create release
             uses: softprops/action-gh-release@v2
             with:
               files: |
                 build/signed/*.apk
-                Kazumi_windows_*.zip
-                Kazumi_macos_*.dmg
-                Kazumi_ios_*.ipa
-                Kazumi_linux_*.tar.gz
-                Kazumi_linux_*.deb
+                bangumi_windows_*.zip
+                bangumi_macos_*.dmg
+                bangumi_ios_*.ipa
+                bangumi_linux_*.tar.gz
+                bangumi_linux_*.deb

@@ -1,4 +1,4 @@
-import 'package:kazumi/pages/history/history_page.dart';
+import 'package:bangumi/pages/history/history_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class HistoryModule extends Module {

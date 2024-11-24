@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:kazumi/pages/video/video_controller.dart'; 
+import 'package:bangumi/pages/video/video_controller.dart'; 
 
 class TextDisplayWidget extends StatefulWidget {
   const TextDisplayWidget({super.key});
